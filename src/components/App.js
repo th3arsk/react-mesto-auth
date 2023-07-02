@@ -143,7 +143,11 @@ function App() {
         setInfoPopupOpen(true)
       }
     })
-    .catch(err => console.log(`Ошибка.....: ${err}`));
+    .catch((err) => {
+      setInfoPopupStatus(false)
+      setInfoPopupOpen(true)
+      console.log(`Ошибка.....: ${err}`)
+    })
   }
 
   function handleTokenCheck() {
@@ -171,7 +175,11 @@ function App() {
       navigate("/")
       setLoggedIn(true)
     })
-    .catch(err => console.log(`Ошибка.....: ${err}`));
+    .catch((err) => {
+      setInfoPopupStatus(false)
+      setInfoPopupOpen(true)
+      console.log(`Ошибка.....: ${err}`)
+    })
   }
 
   function exit() {
