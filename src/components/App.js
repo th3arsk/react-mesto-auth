@@ -135,7 +135,7 @@ function App() {
     signup(password, email)
     .then((res) => {
        if (res) {  
-        navigate("/sign-in")
+        navigate("/react-mesto-auth/sign-in")
         setInfoPopupStatus(true)
         setInfoPopupOpen(true)
       } else {
@@ -161,7 +161,7 @@ function App() {
           setLoggedIn(true)
           setUserEmail(res.data.email);
         } else {
-          navigate("/sign-in")
+          navigate("/react-mesto-auth/sign-in")
         }
       })
       .catch(err => console.log(`Ошибка.....: ${err}`));;
@@ -172,7 +172,7 @@ function App() {
     console.log(password, email)
     signin(password, email)
     .then(() => {
-      navigate("/")
+      navigate("/react-mesto-auth")
       setLoggedIn(true)
     })
     .catch((err) => {
@@ -185,14 +185,14 @@ function App() {
   function exit() {
     setLoggedIn(false);
     localStorage.removeItem('jwt');
-    navigate("/sign-in")
+    navigate("/react-mesto-auth/sign-in")
   }
 
   return (
     <>  
       <CurrentUserContext.Provider value={currentUser}>
         <Routes>
-          <Route path="/" element={
+          <Route path="/react-mesto-auth" element={
             <ProtectedRoute loggedIn={loggedIn} element={
               <>
                 <Header text="Выйти" handleClick={exit} onEmail={userEmail}/>
@@ -202,15 +202,15 @@ function App() {
               </>
             }/>
           }/> 
-          <Route path="/sign-up" element={
+          <Route path="/react-mesto-auth/sign-up" element={
             <>
-              <Header text="Войти" handleClick={()=>{navigate("/sign-in")}}/>
+              <Header text="Войти" handleClick={()=>{navigate("/react-mesto-auth/sign-in")}}/>
               <Register onSubmit={register} />
             </>} 
           />
-          <Route path="/sign-in" element={
+          <Route path="/react-mesto-auth/sign-in" element={
             <>
-              <Header text="Регистрация" handleClick={()=>{navigate("/sign-up")}}/>
+              <Header text="Регистрация" handleClick={()=>{navigate("/react-mesto-auth/sign-up")}}/>
               <Login onSubmit={login}/>
             </>} 
           />
