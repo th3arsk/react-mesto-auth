@@ -135,7 +135,7 @@ function App() {
     signup(password, email)
     .then((res) => {
        if (res) {  
-        navigate("/react-mesto-auth/sign-in")
+        navigate("/sign-in")
         setInfoPopupStatus(true)
         setInfoPopupOpen(true)
       } else {
@@ -161,7 +161,7 @@ function App() {
           setLoggedIn(true)
           setUserEmail(res.data.email);
         } else {
-          navigate("/react-mesto-auth/sign-in")
+          navigate("/sign-in")
         }
       })
       .catch(err => console.log(`Ошибка.....: ${err}`));;
@@ -172,7 +172,7 @@ function App() {
     console.log(password, email)
     signin(password, email)
     .then(() => {
-      navigate("/react-mesto-auth")
+      navigate("/")
       setLoggedIn(true)
     })
     .catch((err) => {
@@ -185,7 +185,7 @@ function App() {
   function exit() {
     setLoggedIn(false);
     localStorage.removeItem('jwt');
-    navigate("/react-mesto-auth/sign-in")
+    navigate("/sign-in")
   }
 
   return (
@@ -202,15 +202,15 @@ function App() {
               </>
             }/>
           }/> 
-          <Route path="/react-mesto-auth/sign-up" element={
+          <Route path="/sign-up" element={
             <>
-              <Header text="Войти" handleClick={()=>{navigate("/react-mesto-auth/sign-in")}}/>
+              <Header text="Войти" handleClick={()=>{navigate("/sign-in")}}/>
               <Register onSubmit={register} />
             </>} 
           />
-          <Route path="/react-mesto-auth/sign-in" element={
+          <Route path="/sign-in" element={
             <>
-              <Header text="Регистрация" handleClick={()=>{navigate("/react-mesto-auth/sign-up")}}/>
+              <Header text="Регистрация" handleClick={()=>{navigate("/sign-up")}}/>
               <Login onSubmit={login}/>
             </>} 
           />
